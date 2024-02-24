@@ -95,7 +95,7 @@ Execute unit and integration tests using Visual Studio's test runner or your pre
 
 ## API Documentation
 
-Access the Swagger UI at `https://localhost:7242/index.html` to explore the API endpoints.
+Access the Swagger UI at `https://localhost:7242/index.html` (or your specific port) to explore the API endpoints.
 
 ## Enhancements (For Production Readiness)
 
