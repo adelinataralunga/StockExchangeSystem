@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StockExchangeSystem.Data.Interfaces;
 using StockExchangeSystem.Domain;
-using System.Reflection;
 
 namespace StockExchangeSystem.Data.Repositories
 {

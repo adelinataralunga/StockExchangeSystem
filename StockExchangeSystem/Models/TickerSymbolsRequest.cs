@@ -1,5 +1,4 @@
 ﻿using StockExchangeSystem.API.Validations;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StockExchangeSystem.API.Models
