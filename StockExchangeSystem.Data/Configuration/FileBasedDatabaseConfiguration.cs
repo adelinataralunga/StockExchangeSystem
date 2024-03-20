@@ -2,7 +2,7 @@
 
 namespace StockExchangeSystem.Data.Configuration
 {
-    public class TestingDatabaseConfiguration : IDatabaseConfiguration
+    public class FileBasedDatabaseConfiguration : IDatabaseConfiguration
     {
         public string GetConnectionString() =>
             "Filename=../StockExchangeSystem.Data/StockExchange.db";

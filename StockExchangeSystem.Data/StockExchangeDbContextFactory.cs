@@ -13,7 +13,7 @@ namespace StockExchangeSystem.Data
             // Use a test database for the factory by default
             optionsBuilder.UseSqlite("Filename=../StockExchangeSystem.Data/StockExchange.db");
 
-            return new StockExchangeDbContext(optionsBuilder.Options, new TestingDatabaseConfiguration());
+            return new StockExchangeDbContext(optionsBuilder.Options, new FileBasedDatabaseConfiguration());
         }
     }
 }

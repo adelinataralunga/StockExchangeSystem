@@ -30,7 +30,7 @@ builder.Services.AddDbContext<StockExchangeDbContext>(options =>
 {
     var databaseConfiguration = (IDatabaseConfiguration)(builder.Configuration.GetValue<bool>("UseInMemoryDatabase")
         ? new InMemoryDatabaseConfiguration()
-        : new TestingDatabaseConfiguration());
+        : new FileBasedDatabaseConfiguration());
 
     options.UseSqlite(databaseConfiguration.GetConnectionString());
 });
@@ -42,7 +42,7 @@ if (builder.Configuration.GetValue<bool>("UseInMemoryDatabase"))
 }
 else
 {
-    builder.Services.AddScoped<IDatabaseConfiguration, TestingDatabaseConfiguration>();
+    builder.Services.AddScoped<IDatabaseConfiguration, FileBasedDatabaseConfiguration>();
 }
 
 // Register the Swagger generator, defining one or more Swagger documents
