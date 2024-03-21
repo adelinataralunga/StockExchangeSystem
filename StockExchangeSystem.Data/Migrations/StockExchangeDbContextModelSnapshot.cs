@@ -123,6 +123,8 @@ namespace StockExchangeSystem.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BrokerId");
+
                     b.HasIndex("StockId");
 
                     b.ToTable("Trades");
@@ -135,7 +137,7 @@ namespace StockExchangeSystem.Data.Migrations
                             Price = 145m,
                             Quantity = 5m,
                             StockId = 1,
-                            Timestamp = new DateTime(2024, 2, 21, 17, 8, 53, 563, DateTimeKind.Utc).AddTicks(5001)
+                            Timestamp = new DateTime(2024, 3, 20, 6, 55, 49, 989, DateTimeKind.Utc).AddTicks(9211)
                         },
                         new
                         {
@@ -144,17 +146,25 @@ namespace StockExchangeSystem.Data.Migrations
                             Price = 260m,
                             Quantity = 2m,
                             StockId = 2,
-                            Timestamp = new DateTime(2024, 2, 22, 17, 8, 53, 563, DateTimeKind.Utc).AddTicks(5038)
+                            Timestamp = new DateTime(2024, 3, 21, 6, 55, 49, 989, DateTimeKind.Utc).AddTicks(9245)
                         });
                 });
 
             modelBuilder.Entity("StockExchangeSystem.Domain.Trade", b =>
                 {
+                    b.HasOne("StockExchangeSystem.Domain.Broker", "Broker")
+                        .WithMany()
+                        .HasForeignKey("BrokerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("StockExchangeSystem.Domain.Stock", "Stock")
                         .WithMany()
                         .HasForeignKey("StockId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Broker");
 
                     b.Navigation("Stock");
                 });

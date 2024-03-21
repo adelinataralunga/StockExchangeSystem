@@ -18,4 +18,8 @@
     <ProjectReference Include="..\StockExchangeSystem.Domain\StockExchangeSystem.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

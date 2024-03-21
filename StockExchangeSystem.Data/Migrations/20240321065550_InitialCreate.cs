@@ -56,6 +56,12 @@ namespace StockExchangeSystem.Data.Migrations
                 {
                     table.PrimaryKey("PK_Trades", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Trades_Brokers_BrokerId",
+                        column: x => x.BrokerId,
+                        principalTable: "Brokers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Trades_Stocks_StockId",
                         column: x => x.StockId,
                         principalTable: "Stocks",
@@ -90,9 +96,14 @@ namespace StockExchangeSystem.Data.Migrations
                 columns: new[] { "Id", "BrokerId", "Price", "Quantity", "StockId", "Timestamp" },
                 values: new object[,]
                 {
-                    { 1, 1, 145m, 5m, 1, new DateTime(2024, 2, 21, 17, 8, 53, 563, DateTimeKind.Utc).AddTicks(5001) },
-                    { 2, 2, 260m, 2m, 2, new DateTime(2024, 2, 22, 17, 8, 53, 563, DateTimeKind.Utc).AddTicks(5038) }
+                    { 1, 1, 145m, 5m, 1, new DateTime(2024, 3, 20, 6, 55, 49, 989, DateTimeKind.Utc).AddTicks(9211) },
+                    { 2, 2, 260m, 2m, 2, new DateTime(2024, 3, 21, 6, 55, 49, 989, DateTimeKind.Utc).AddTicks(9245) }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Trades_BrokerId",
+                table: "Trades",
+                column: "BrokerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Trades_StockId",
@@ -104,10 +115,10 @@ namespace StockExchangeSystem.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Brokers");
+                name: "Trades");
 
             migrationBuilder.DropTable(
-                name: "Trades");
+                name: "Brokers");
 
             migrationBuilder.DropTable(
                 name: "Stocks");
